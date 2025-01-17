@@ -1,25 +1,22 @@
-name: Send Email on Push
-
 on:
   push:
-    branches:
-      - main
-
 jobs:
-  send_mail:
+  mail_on_push:
     runs-on: windows-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Send email
+      - name: Send mail to this address
         uses: dawidd6/action-send-mail@v3
         with:
           server_address: smtp.gmail.com
           server_port: 587
-          username: ${{ ervin.sults@gmail.com }}
-          password: ${{ Loitsu2812 }}
-          subject: "Push Notification from ${{ github.repository }}"
-          body: "Committer: ${{ github.event.pusher.name }}\nMessage: ${{ github.event.head_commit.message }}"
-          to: "ervin.sults@gmail.com"
-          from: "ervin.sults@gmail.com"
+          username: ${{ secrets.MAIL_USERNAME }}  
+          password: ${{ secrets.MAIL_PASSWORD }}  
+          subject: 'ALERT, we have detected a commit in ${{ github.repository }}'
+          body: |
+            Hello user,
+
+            A commit has been detected!
+
+            Commit created by ${{ github.event.pusher.name }}
+          to: "ervin.sults@gmail.com"  
+          from: ${{ secrets.MAIL_USERNAME }}  
