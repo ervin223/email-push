@@ -13,7 +13,7 @@ jobs:
           password: ${{ secrets.MAIL_PASSWORD }}  
           subject: 'ALERT, we have detected a commit in ${{ github.repository }}'
           body: |
-            Hello user,
+            Hello Erwin,
 
             A commit has been detected!
 
