@@ -1,0 +1,25 @@
+name: Send Email on Push
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  send_mail:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Send email
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 587
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
+          subject: "Push Notification from ${{ github.repository }}"
+          body: "Committer: ${{ github.event.pusher.name }}\nMessage: ${{ github.event.head_commit.message }}"
+          to: "ervin.sults@gmail.com"
+          from: "ervin.sults@gmail.com"
