@@ -17,8 +17,8 @@ jobs:
         with:
           server_address: smtp.gmail.com
           server_port: 587
-          username: ${{ secrets.MAIL_USERNAME }}
-          password: ${{ secrets.MAIL_PASSWORD }}
+          username: ${{ ervin.sults@gmail.com }}
+          password: ${{ Loitsu2812 }}
           subject: "Push Notification from ${{ github.repository }}"
           body: "Committer: ${{ github.event.pusher.name }}\nMessage: ${{ github.event.head_commit.message }}"
           to: "ervin.sults@gmail.com"
