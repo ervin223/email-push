@@ -16,5 +16,5 @@ jobs:
             Tere Jüri, saadan teile commiti alert
 
             Commit created by ${{ github.event.pusher.name }}
-          to: "ervin.sults@gmail.com"  
+          to: "juri.vaitmaa@tthk.ee"  
           from: ${{ secrets.MAIL_USERNAME }}  
